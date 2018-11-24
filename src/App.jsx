@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
+import useRefresh from './hooks/useRefresh';
 import CardList from './components/CardList';
 
 const sortByRank = (a, b) => {
@@ -29,24 +30,19 @@ const convertCoins = (data) => {
 function App() {
   const [coins, setCoins] = useState([]);
   const [index, setIndex] = useState(0);
-  const [lastRefresh, setLastRefresh] = useState(null);
 
-  useEffect(() => {
+  useRefresh(60000, () => {
     fetch('https://api.coinmarketcap.com/v2/ticker/')
       .then(response => (response.json()))
       .then((responseJson) => {
         const { data } = responseJson;
         setCoins(convertCoins(data));
       });
-  }, [lastRefresh]);
+  });
 
-  useEffect(() => {
+  useRefresh(1000, () => {
     const nextIndex = (index + 10 + 100) % 100;
-    setTimeout(() => setIndex(nextIndex), 2000);
-
-    if (Date.now() - lastRefresh > 60000) {
-      setLastRefresh(Date.now());
-    }
+    setIndex(nextIndex);
   });
 
   const coinList = coins.slice(index, index + 10);

@@ -1,9 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const round = (num) => {
-  return Math.round(num * 100) / 100;
-};
+const round = num => (Math.round(num * 100) / 100);
 
 const CardLayout = styled.div`
   display: flex;
@@ -45,11 +43,11 @@ const CardQuote = styled.span`
   border-radius: 8px;
 `;
 
-const getImgSrc = (symbol) => {
-  return `/icons/${symbol.toLowerCase()}@2x.png`;
-};
+const getImgSrc = symbol => (`/icons/${symbol.toLowerCase()}@2x.png`);
 
-const Card = ({title, symbol, price, hourlyChange, dailyChange, weeklychange}) => (
+const Card = ({
+  title, symbol, price, hourlyChange, dailyChange, weeklychange,
+}) => (
   <CardLayout>
     <CardImage src={getImgSrc(symbol)} title={title} />
     <CardPrice>{`$ ${round(price)}`}</CardPrice>

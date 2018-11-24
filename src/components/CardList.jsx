@@ -15,7 +15,7 @@ const CardListLayout = styled.div`
   } 
 `;
 
-const CardList = ({coins}) => { 
+const CardList = ({ coins }) => {
   const cards = coins.map(coin => (<Card key={coin.id} {...coin} />));
 
   return (
