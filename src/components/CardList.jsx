@@ -8,7 +8,7 @@ const CardListLayout = styled.div`
   flex-wrap: wrap;
   justify-content: space-around;
   align-conent: center;
-  width: 500px;
+  width: 700px;
 
   > * {
       margin: 5px;

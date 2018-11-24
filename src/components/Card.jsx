@@ -6,7 +6,7 @@ const round = num => (Math.round(num * 100) / 100);
 const CardLayout = styled.div`
   display: flex;
   flex-direction: column;
-  width: 150px;
+  width: 200px;
   height: 150px;
   background-color: #BEE9E8;
   box-shadow: 10px 10px 8px #888888;
